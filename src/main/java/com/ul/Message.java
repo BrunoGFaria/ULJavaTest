@@ -3,11 +3,17 @@
  */
 package com.ul;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Message {
 
     public enum Priority {
-
-        HIGH, MEDIUM, LOW
+        HIGH(1), MEDIUM(2), LOW(3);
+        Priority(Integer order){
+            this.order = order;
+        }
+        Integer order;
     }
 
     private long timestamp;
@@ -30,5 +36,16 @@ public class Message {
 
     public String getText() {
         return text;
+    }
+
+    public String toString(){
+        return "Priority: " + this.priority.toString() + " Timestamp: " + this.formatTimeStamp(this.timestamp) +
+                " Message Text: " + this.text;
+    }
+
+    private String formatTimeStamp(long timestamp) {
+        SimpleDateFormat sdf = new SimpleDateFormat("MMM dd,yyyy HH:mm");
+        Date date = new Date(timestamp);
+        return sdf.format(date);
     }
 }

@@ -35,4 +35,6 @@ public class Producer {
         // set message counter to maximum number of messages to stop loop, allowing thread to exit
         messageCounter = 100;
     }
+
+
 }
